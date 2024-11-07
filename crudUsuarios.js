@@ -1,6 +1,7 @@
 import PromptSync from "prompt-sync"
 import { usuarios } from "./data.js";
 
+const prompt = PromptSync();
 
 function crearUsuario() {
     let nombre = prompt("Ingrese nuevo nombre del usuario")
@@ -11,14 +12,16 @@ function crearUsuario() {
 
     }
     else {
-        // Crear un objeto usuario con la información ingresada
-        let id = usuarios.length();
-        let usuario =[{
+        // Crear un usuario con la información ingresada 
+        let id = Math.floor(Math.random() * 100000000000)
+        console.log("creacion usuario id: ",id);
+        
+        let usuario ={
             id:id,
             nombre:nombre,
             apellido:apellido,
 
-        }]
+        }
         usuarios.push(usuario)
 
         usuarios.map(usuario => (console.log(usuario)))
@@ -27,13 +30,34 @@ function crearUsuario() {
 }
 
 
-function editarUsuario() {
-    let usuario = prompt("Ingrese nuevo Usuario")
-}
-function eliminarUsuario() {
-    let usuario = prompt("Eliminar usuario")
-}
+// crearUsuario(); 
 
+function editarUsuario() {
+
+    let id = Number(prompt("Ingrese id del usuario"))
+    
+    let usuario = usuarios.find(usuario => usuario.id === id)
+    if (usuario) {
+        usuario.nombre = prompt("Ingrese nuevo nombre del usuario")
+        usuario.apellido = prompt("Ingrese nuevo apellido del usuario")
+        
+    usuarios.map(id => (console.log(id)))
+    }
+}
+editarUsuario()
+
+
+function eliminarUsuario() 
+{
+    let id =Number(prompt("Eliminar un usuario")) ;
+    let usuario = usuarios.splice(usuario=>usuario.id==id)
+    if(usuario){
+        usuario.usuario= prompt("Eliminar un usuario")
+        console.log(id)
+        
+    }
+}
+eliminarUsuario()
 
 
 

@@ -27,7 +27,6 @@ const usuarios = [
     }
 
 
-
 ];
 const libros = [
     {

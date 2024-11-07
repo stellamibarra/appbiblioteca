@@ -1,10 +1,12 @@
 import PromptSync from "prompt-sync"
 
+const prompt = PromptSync();
+
 function crearlibro() {
     let titulo = prompt("Ingrese el titulo")
     let autor = prompt("Ingrese autor")
     if (autor == ""){
-        console.log("Escriba un autor")
+        console.log("Escriba un  nuevoautor")
     } 
     libros.push(
        {
