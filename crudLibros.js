@@ -6,7 +6,7 @@ function crearlibro() {
     let titulo = prompt("Ingrese el titulo")
     let autor = prompt("Ingrese autor")
     if (autor == ""){
-        console.log("Escriba un  nuevoautor")
+        console.log("Escriba un  nuevo autor")
     } 
     libros.push(
        {

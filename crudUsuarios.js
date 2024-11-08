@@ -30,7 +30,6 @@ function crearUsuario() {
 }
 
 
-// crearUsuario(); 
 
 function editarUsuario() {
 
@@ -44,20 +43,19 @@ function editarUsuario() {
     usuarios.map(id => (console.log(id)))
     }
 }
-editarUsuario()
 
 
 function eliminarUsuario() 
 {
     let id =Number(prompt("Eliminar un usuario")) ;
-    let usuario = usuarios.splice(usuario=>usuario.id==id)
+    let usuario = usuarios.splice(usuario =>usuario.id ==id)
     if(usuario){
         usuario.usuario= prompt("Eliminar un usuario")
-        console.log(id)
+        console.log( "usuario eliminado" )
         
     }
 }
-eliminarUsuario()
+export {crearUsuario,editarUsuario,eliminarUsuario}
 
 
 
