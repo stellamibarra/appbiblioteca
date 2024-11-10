@@ -1,5 +1,5 @@
 import PromptSync from "prompt-sync"
-import { libros } from "./data.js";
+import { libros, usuarios } from "./data.js";
 
 const prompt = PromptSync();
 
@@ -7,7 +7,7 @@ function crearLibro() {
     let titulo = prompt("Ingrese nuevo nombre Titulo")
     let autor = prompt("Ingrese nuevo autor")
     // Si el titulo o autor  no esten  vacíos, vuelvo a solicitar el ingreso
-    if (titulo === "" || autor === "") {
+    if (titulo === "" && autor === "") {
         crearLibro();
 
     }
@@ -19,7 +19,7 @@ function crearLibro() {
         let libro = {
             id: id,
             titulo: titulo,
-            atutor: autor,
+            autor: autor,
 
         }
         libros.push(libro)
@@ -42,16 +42,15 @@ function editarLibro() {
     }
 }
 
-
 function eliminarLibro() {
-    let id = Number(prompt("Eliminar un Libro"));
-    let libro = libros.splice(libro => libro.id == id)
-    if (libro) {
-        libro.libro = prompt("Eliminar un Libro")
-        console.log("Libro eliminado")
-
-    }
+    mostrarLibros()
+    let libroAEliminar = Number(prompt("elija el id de libro a eliminar"));
+    let indice = libros.findIndex(libro => libro.id === libroAEliminar);
+    let libroEliminado = libros.splice(indice, 1)
+    console.log("Libro eliminado", libroEliminado);
 }
+
+
 function mostrarLibros() {
     console.log("Lista de libros:");
     libros.forEach(libro => {
@@ -60,4 +59,18 @@ function mostrarLibros() {
 }
 
 
-export { crearLibro, editarLibro, eliminarLibro,mostrarLibros }
+
+function buscarLibrosPrestados() {
+    console.log("Libros prestados:");
+    for (let index = 0; index < libros.length; index++) {
+        const element = libros[index];
+        for (let index = 0; index < usuarios.length; index++) {
+            const u = usuarios[index];
+            if(u.id === element.prestado){
+                console.log(`${u.nombre} ${u.apellido} tiene el libro ${element.titulo}`);
+                
+            }
+        }
+    }
+}
+export { crearLibro, editarLibro, eliminarLibro, mostrarLibros ,buscarLibrosPrestados}

@@ -1,37 +1,45 @@
 import PromptSync from "prompt-sync";
-import{crearLibro,editarLibro,eliminarLibro,mostrarLibros}from "./crudLibros.js"
+import { buscarLibrosPrestados, crearLibro, editarLibro, eliminarLibro, mostrarLibros } from "./crudLibros.js"
 
 
-function menu (){
+export function menuLibros() {
 
 
-const prompt = PromptSync();
-let option = Number(prompt("1. Crear Libro,2. Editar Libro,3.Eliminar Libro ,4.Mostrar Libros"))
-console.log(option)
+    const prompt = PromptSync();
+    let opcion = Number(prompt("1. Crear Libro,2. Editar Libro,3.Eliminar Libro ,4.Mostrar Libros,5.Buscar Libros Prestados ,6.Menu Principal"))
+    console.log(opcion)
 
-switch (option) {
-    case 1:
-        crearLibro()
-        menu()
-        
-        break;
-    case 2:
-        editarLibro()
-        menu()
-        break;
-    case 3:
-        eliminarLibro()
-        menu()
-        break;
+    switch (opcion) {
+        case 1:
+            crearLibro()
+            menuLibros()
+
+            break;
+        case 2:
+            editarLibro()
+            menuLibros()
+            break;
+        case 3:
+            eliminarLibro()
+            menuLibros()
+            break;
         case 4:
             mostrarLibros()
-            menu()
+            menuLibros()
             break;
-            
+        case 5:
+            buscarLibrosPrestados()
+            menuLibros()
+            break;
+            case 6:
+                menu()
+                break;
 
-    default:
 
+
+
+        default:
+
+    }
 }
-}
 
-menu()
