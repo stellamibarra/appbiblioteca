@@ -55,7 +55,14 @@ function eliminarUsuario()
         
     }
 }
-export {crearUsuario,editarUsuario,eliminarUsuario}
+function mostrarUsuarios() {
+    console.log("Lista de Usuarios:");
+    usuarios.forEach(usuario => {
+        console.log(`ID: ${usuario.id}, Nombre: ${usuario.nombre}, Apellido: ${usuario.apellido}`);
+    });
+}
+
+export {crearUsuario,editarUsuario,eliminarUsuario,mostrarUsuarios}
 
 
 

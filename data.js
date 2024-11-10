@@ -30,20 +30,24 @@ const usuarios = [
 ];
 const libros = [
     {
+        id:1,
         titulo :"La Gallina Degollada",
         autor:"Horacio Quiroga"
     },
     {
+        id:2,
         titulo: "Don Quijote de la Mancha",
         autor: "Miguel de Cervantes"
     },
     {
+        id:3,
         titulo: "1984",
         autor: "George Orwell"
     },
     {
+        id:4,
         titulo: "El Principito",
         autor: "Antoine de Saint-Exupéry"
     }
 ]
-export { usuarios }
+export { usuarios,libros }

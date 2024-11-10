@@ -1,12 +1,12 @@
 import PromptSync from "prompt-sync";
-import{crearUsuario, editarUsuario, eliminarUsuario}from "./crudUsuarios.js"
+import{crearUsuario, editarUsuario, eliminarUsuario, mostrarUsuarios}from "./crudUsuarios.js"
 
 
 function menu (){
 
 
 const prompt = PromptSync();
-let option = Number(prompt("1. crear usuario,2. editar usuario ,3.eliminar usuario "))
+let option = Number(prompt("1. Crear usuario,2. Editar usuario ,3.Eliminar usuario ,4.Mostrar Usuarios"))
 console.log(option)
 
 switch (option) {
@@ -23,7 +23,10 @@ switch (option) {
         eliminarUsuario()
         menu()
         break;
-
+case 4:
+    mostrarUsuarios()
+    menu()
+    break;
     default:
 
 }

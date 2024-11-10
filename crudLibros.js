@@ -1,38 +1,63 @@
 import PromptSync from "prompt-sync"
+import { libros } from "./data.js";
 
 const prompt = PromptSync();
 
-function crearlibro() {
-    let titulo = prompt("Ingrese el titulo")
-    let autor = prompt("Ingrese autor")
-    if (autor == ""){
-        console.log("Escriba un  nuevo autor")
-    } 
-    libros.push(
-       {
-           titulo:titulo,
-           autor:autor
-       }
-      )
-      libros.map(libro =>(console.log(libro)))
-      
-   }
-   crearlibro()
-   
-     
+function crearLibro() {
+    let titulo = prompt("Ingrese nuevo nombre Titulo")
+    let autor = prompt("Ingrese nuevo autor")
+    // Si el titulo o autor  no esten  vacíos, vuelvo a solicitar el ingreso
+    if (titulo === "" || autor === "") {
+        crearLibro();
 
-function editarLibbro() {
-    let titulo = prompt("Ingrese nuevo titulo")
-    let nombre = prompt("Ingrese nuevo autor")
+    }
+    else {
+        // Crear un libro con la información ingresada import PromptSync from "prompt-sync"
+        let id = Math.floor(Math.random() * 100000000000)
+        console.log("creacion libro id: ", id);
 
+        let libro = {
+            id: id,
+            titulo: titulo,
+            atutor: autor,
 
- function eliminarLibro() {
-    let titulo = prompt("Eliminar titulo")
-    let autor = prompt("Eliminar autor")
+        }
+        libros.push(libro)
+
+        libros.map(libro => (console.log(libro)))
+    }
 
 }
-function actualizarLibro() {
-    let titulo = prompt("Actualizar titulo")
-    let autor = prompt("Actualizar autor")
+
+function editarLibro() {
+
+    let id = Number(prompt("Ingrese id del libro"))
+
+    let libro = libros.find(libro => libro.id === id)
+    if (libro) {
+        libro.titulo = prompt("Ingrese nuevo nombre del Titulo")
+        libro.autor = prompt("Ingrese nuevo apellido del autor")
+
+        libros.map(id => (console.log(id)))
+    }
 }
+
+
+function eliminarLibro() {
+    let id = Number(prompt("Eliminar un Libro"));
+    let libro = libros.splice(libro => libro.id == id)
+    if (libro) {
+        libro.libro = prompt("Eliminar un Libro")
+        console.log("Libro eliminado")
+
+    }
 }
+function mostrarLibros() {
+    console.log("Lista de libros:");
+    libros.forEach(libro => {
+        console.log(`ID: ${libro.id}, Título: ${libro.titulo}, Autor: ${libro.autor}`);
+    });
+}
+
+
+export { crearLibro, editarLibro, eliminarLibro,mostrarLibros }
